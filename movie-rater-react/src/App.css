@@ -1,0 +1,101 @@
+.App {
+  padding: 2%;
+  min-height: 95vh;
+  background-color: #282c34;
+  color: white;
+  font-size: calc(10px + 1vmin);
+}
+
+.App-header {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: orange;
+}
+
+.layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  font-size: calc(10px + 1vmin);
+}
+
+.login-container {
+  width: 50%;
+  margin: 0 25%;
+  text-align: center;
+}
+
+input,
+textarea {
+  width: 95%;
+  padding: 10px;
+  margin: 8px 0;
+  font-size: calc(10px + 0.8vmin);
+}
+
+button {
+  color: #444;
+  background-color: #f3f3f3;
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-weight: bold;
+  outline: none;
+  width: 50%;
+  font-size: calc(10px + 1vmin);
+}
+
+button:disabled {
+  color: #f3f3f3;
+  background-color: #444;
+  cursor: not-allowed;
+}
+
+.orange {
+  color: orange
+}
+
+.purple {
+  color: purple
+}
+
+.rate-container {
+  margin-top: 20px;
+  border-top: 2px solid purple;
+}
+
+.rate-container .fa-star {
+  font-size: 1.8rem;
+  cursor: pointer;
+}
+
+.movie-item {
+  display: grid;
+  grid-template-columns: 1fr auto auto;
+  /* vertical-align: middle; */
+}
+
+.movie-item svg {
+  font-size: 1.3rem;
+  margin: 24px 5px;
+}
+
+.fa-trash {
+  color: crimson;
+}
+
+h1 .fa-film {
+  color: white;
+  transform: rotate(20deg);
+}
+
+.fa-arrow-right-from-bracket {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  cursor: pointer;
+  color: white;
+}
