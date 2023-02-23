@@ -7,6 +7,7 @@ import { API } from './api-service';
 import { useCookies } from 'react-cookie';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faFilm, faSignOut } from '@fortawesome/free-solid-svg-icons'
+import { useFetch } from './hooks/useFetch';
 
 function App() {
 
@@ -14,19 +15,11 @@ function App() {
   const [selectedMovie, setSelectedMovie] = useState(null);
   const [editedMovie, setEditedMovie] = useState(null);
   const [token, setToken, removeToken] = useCookies([API.TOKEN_NAME]);
+  const [data, loading, error] = useFetch();
 
   useEffect(() => {
-    fetch('http://127.0.0.1:8000/api/movies/', {
-      method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': `Token ${token[API.TOKEN_NAME]}`
-      }
-    })
-      .then((response) => response.json())
-      .then((response) => setMovies(response))
-      .catch((error) => console.log(error));
-  }, [token]);
+    setMovies(data);
+  }, [data])
 
   useEffect(() => {
     if (!token[API.TOKEN_NAME] | token[API.TOKEN_NAME] === undefined)
@@ -85,6 +78,9 @@ function App() {
     console.log('removeToken');
     removeToken([API.TOKEN_NAME], { path: '/' });
   }
+
+  if (loading) return <h1 className="App-header">Loading...</h1>
+  if (error) return <h1>Error loading movies: {error}</h1>
 
   return (
     <div className="App">
